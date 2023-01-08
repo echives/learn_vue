@@ -74,9 +74,10 @@ const registryCallback = (name: string, callback: (response: INativeResponse) =>
   }
   globalScope[name] = (response: any) => {
     const error = response.err
-    const dataJSON = response.dataJSON
+    const dataJSON = response.data
+    console.log(response.data.result)
     const data = JSON.parse(dataJSON)
     clearTimeout(timeId)
-    callback({ err: error, data: data})
+    callback({ err: error, data: data })
   }
 }

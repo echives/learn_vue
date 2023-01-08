@@ -14,6 +14,10 @@ import { RouterLink, RouterView } from 'vue-router'
 </template>
 
 <style scoped>
+body {
+  place-items: normal start;
+}
+
 header {
   line-height: 1.5;
   display: flex;

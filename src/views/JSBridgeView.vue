@@ -3,10 +3,10 @@
     <h2>JSBridge测试页面</h2>
     <div class='test-cases'>
       <div class="case1">
-        <button @click="helloworld">向test发送helloworld字符串</button>
+        <button @click="helloworld">发送helloworld字符串</button>
       </div>
       <div class="case2">
-        <button @click="calculationAddition">随机生成一段加法，请求客户端计算</button>
+        <button @click="calculationAddition">随机生成一对整数，请求客户端计算</button>
         <div>{{ numberA }} + {{ numberB }} = {{ additionResult }}</div>
       </div>
     </div>
