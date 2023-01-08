@@ -3,7 +3,7 @@ import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
-  <RouterLink to="/">
+  <RouterLink to="/home">
     <header>
       <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="25" height="25" />
       <span>前端试验田</span>
