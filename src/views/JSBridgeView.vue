@@ -15,10 +15,11 @@
 
 <script lang="ts">
 import { runBridge } from '@/utils/bridge'
-export default {
+import { defineComponent } from 'vue'
+export default defineComponent({
   mounted () {
   },
-  data: function () {
+  data () {
     return {
       numberA: 0,
       numberB: 0,
@@ -31,7 +32,7 @@ export default {
     },
     calculationAddition () {
       const numberA = Math.floor(Math.random() * 10000)
-      const numberB = Math.floor(Math.random() * 10000) 
+      const numberB = Math.floor(Math.random() * 10000)
       this.numberA = numberA
       this.numberB = numberB
       runBridge('calculateAddition', { numberA: numberA, numberB: numberB }, ({ data, err }) => {
@@ -49,7 +50,7 @@ export default {
       })
     }
   }
-}
+})
 
 </script>
 
