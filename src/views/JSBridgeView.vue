@@ -18,7 +18,7 @@ import { runBridge } from '@/utils/bridge'
 export default {
   mounted () {
   },
-  data () {
+  data: function () {
     return {
       numberA: 0,
       numberB: 0,
@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     helloworld () {
-      runBridge('helloworld', {})  
+      runBridge('helloworld', {})
     },
     calculationAddition () {
       const numberA = Math.floor(Math.random() * 10000)
