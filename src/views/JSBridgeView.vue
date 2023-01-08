@@ -18,7 +18,7 @@ import { runBridge } from '@/utils/bridge'
 export default {
   mounted () {
   },
-  data: () => {
+  data () {
     return {
       numberA: 0,
       numberB: 0,
