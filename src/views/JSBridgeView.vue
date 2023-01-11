@@ -15,26 +15,47 @@
         <h3>随机生成一对整数，请求客户端计算减法，callback有效时间2s</h3>
         <button @click="calculationSubtraction">生成一组数字</button>
         <div>{{ numberC }} - {{ numberD }} = {{ subtractionResult }}</div>
+        <div class="errorToast">{{ errorToast }}</div>
       </div>
     </div>
   </main>
 </template>
 
 <script lang="ts">
-import { runBridge } from '@/utils/bridge'
+import { runBridge, ERRORS } from '@/utils/bridge'
 import { defineComponent } from 'vue'
+class Data {
+  numberA: number
+  numberB: number
+  numberC: number
+  numberD: number
+  additionResult: number
+  subtractionResult: number
+  errorToast: string | null
+
+  constructor(
+    numberA: number,
+    numberB: number,
+    numberC: number,
+    numberD: number,
+    additionResult: number,
+    subtractionResult: number,
+    errorToast: string | null
+  ) {
+    this.numberA = numberA
+    this.numberB = numberB
+    this.numberC = numberC
+    this.numberD = numberD
+    this.additionResult = additionResult
+    this.subtractionResult = subtractionResult
+    this.errorToast = errorToast
+  }
+}
 export default defineComponent({
   mounted () {
   },
   data () {
-    return {
-      numberA: 0,
-      numberB: 0,
-      numberC: 0,
-      numberD: 0,
-      additionResult: 0,
-      subtractionResult: 0
-    }
+    return new Data(0,0,0,0,0,0,null)
   },
   methods: {
     helloworld () {
@@ -64,8 +85,14 @@ export default defineComponent({
       const numberD = Math.floor(Math.random() * 10000)
       this.numberC = numberC
       this.numberD = numberD
+      this.errorToast = null
       runBridge('calculationSubtraction', { numberC: numberC, numberD: numberD }, ({ data, err }) => {
         if (err) {
+          if (err === ERRORS.TIMEOUT) {
+            this.errorToast = '回调超时'
+          } else {
+            this.errorToast = '其他错误' 
+          }
           console.log(err)
         } else {
           console.log(data.result)
@@ -88,8 +115,20 @@ export default defineComponent({
   padding: 20px 0 20px 0;
 }
 .case {
+  border-radius: 16px;
   background: gainsboro;
   margin: 10px;
-  padding: 10px 0 10px 0;
+  padding: 20px;
+
+  button {
+    background: whitesmoke;
+    border: none;
+    border-radius: 8px; 
+    padding: 10px;
+  }
+
+  .errorToast {
+    color: red;
+  }
 }
 </style>

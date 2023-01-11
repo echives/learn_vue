@@ -3,7 +3,7 @@ interface INativeResponse {
   data: any
 }
 
-enum ERRORS {
+export enum ERRORS {
   NULL = 0,
   TIMEOUT = 1
 }
