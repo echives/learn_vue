@@ -1,7 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import JSBridgeView from '../views/JSBridgeView.vue'
-import AboutView from '../views/AboutView.vue'
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
@@ -14,6 +12,11 @@ const router = createRouter({
       path: '/home',
       name: 'home',
       component: HomeView
+    },
+    {
+      path: '/rem',
+      name: 'rem',
+      component: () => import('@/views/REMView.vue')
     },
     {
       path: '/jsbridge',

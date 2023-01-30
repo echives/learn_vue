@@ -1,7 +1,13 @@
 <template>
   <main>
+    <RouterLink to="rem">
+      <ListItem class="item" title="rem"></ListItem>
+    </RouterLink>
     <RouterLink to="jsbridge">
       <ListItem class="item" title="JSBridge测试"></ListItem>
+    </RouterLink>
+    <RouterLink to="module">
+      <ListItem class="item" title="模块化"></ListItem>
     </RouterLink>
     <RouterLink to="about">
       <ListItem class="item" title="其他"></ListItem>

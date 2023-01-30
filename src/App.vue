@@ -1,5 +1,21 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
+
+(function () {
+  function setRfs() {
+    var designWidth = 375,
+      rem2px = 100;
+    // 动态设置font-size
+    document.documentElement.style.fontSize = Math.min(200, Math.max(window.innerWidth / designWidth * rem2px,
+      document.documentElement.clientWidth / designWidth * rem2px, 50)) + "px"
+  }
+  setRfs()
+  var tid: any
+  window.addEventListener('resize', function () {
+    clearTimeout(tid)
+    tid = setTimeout(setRfs, 100)
+  }, false)
+})()
 </script>
 
 <template>
@@ -58,30 +74,4 @@ nav a:first-of-type {
   border: 0;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
 </style>
